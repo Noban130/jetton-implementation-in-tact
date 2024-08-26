@@ -8,8 +8,8 @@ PROGRAM{
   DECLPROC get_abi_ipfs;
   DECLPROC ?fun_ref_10c319ce0484d846;
   DECLPROC ?fun_ref_2bb4e91335d9c0ac;
+  DECLPROC ?fun_ref_4ab883c09225a768;
   DECLPROC ?fun_ref_4db1459265960c47;
-  DECLPROC ?fun_ref_7a59b2071d8d25c7;
   DECLPROC ?fun_ref_94617972ccb9d70e;
   DECLPROC ?fun_ref_9c6d134f96a50c9f;
   DECLPROC ?fun_ref_aa40675e76c7bba5;
@@ -52,7 +52,7 @@ PROGRAM{
     2 SETGLOBVAR
     ?fun_ref_c344c56349ea959d INLINECALLDICT
     2 5 BLKSWAP
-    ?fun_ref_7a59b2071d8d25c7 INLINECALLDICT
+    ?fun_ref_4ab883c09225a768 INLINECALLDICT
     130 THROWIFNOT
     NEWC
     3 GETGLOBVAR
@@ -187,13 +187,7 @@ PROGRAM{
     EQUAL
     136 THROWIFNOT
   }>
-  ?fun_ref_4db1459265960c47 PROCREF:<{
-    3 GETGLOBVAR
-    MYADDR
-    s1 s2 XCHG
-    ?fun_ref_b8d6a373d037f795 INLINECALLDICT
-  }>
-  ?fun_ref_7a59b2071d8d25c7 PROCREF:<{
+  ?fun_ref_4ab883c09225a768 PROCREF:<{
     2 SAVE
     SAMEALTSAVE
     s0 s1 XCHG
@@ -344,15 +338,10 @@ PROGRAM{
       s1 s4 XCHG
       s3 s3 s0 XCHG3
       1 4 BLKDROP2
-      s1 POP
-      s0 PUSH
-      s0 PUSH
-      ISNULL
-      128 THROWIF
       s5 s8 XCHG
       s4 s7 XCHG
       s3 s6 XCHG
-      s8 s7 s0 XCHG3
+      s8 s7 s7 XCHG3
       ?fun_ref_de2f09962931c59a INLINECALLDICT
       s4 s7 XCHG2
       SUB
@@ -687,6 +676,12 @@ PROGRAM{
     }> PUSHCONT
     IFELSE
     0 PUSHINT
+  }>
+  ?fun_ref_4db1459265960c47 PROCREF:<{
+    3 GETGLOBVAR
+    MYADDR
+    s1 s2 XCHG
+    ?fun_ref_b8d6a373d037f795 INLINECALLDICT
   }>
   ?fun_ref_94617972ccb9d70e PROCREF:<{
     18668 PUSHINT

@@ -106,7 +106,7 @@
 (((int, slice, cell, int, int)), ()) $SampleJetton$_internal_binary_TokenBurnNotification((int, slice, cell, int, int) $self, (int, int, slice, slice) $msg) impure inline {
     var ($self'total_supply, $self'owner, $self'content, $self'mintable, $self'max_supply) = $self;
     var ($msg'query_id, $msg'amount, $msg'sender, $msg'response_destination) = $msg;
-    ($self'total_supply, $self'owner, $self'content, $self'mintable, $self'max_supply)~$SampleJetton$_fun_requireSenderAsWalletOwner(__tact_not_null($msg'response_destination));
+    ($self'total_supply, $self'owner, $self'content, $self'mintable, $self'max_supply)~$SampleJetton$_fun_requireSenderAsWalletOwner($msg'sender);
     $self'total_supply = ($self'total_supply - $msg'amount);
     if ((~ null?($msg'response_destination))) {
         $global_send($SendParameters$_constructor_to_value_bounce_mode_body(__tact_not_null($msg'response_destination), 0, false, 64, $TokenExcesses$_store_cell($TokenExcesses$_constructor_query_id($msg'query_id))));

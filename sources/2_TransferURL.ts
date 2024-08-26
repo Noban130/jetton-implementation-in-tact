@@ -1,4 +1,4 @@
-import { Address, beginCell, contractAddress, toNano, Cell, TonClient4 } from "ton";
+import { Address, beginCell, contractAddress, toNano, Cell, TonClient4 } from "@ton/ton";
 import { ContractSystem, testAddress } from "ton-emulator";
 import { buildOnchainMetadata } from "./utils/jetton-helpers";
 import { printAddress, printHeader, printDeploy, printSeparator } from "./utils/print";

@@ -1,4 +1,4 @@
-import { Address, beginCell, contractAddress, toNano, TonClient4, internal, fromNano, WalletContractV4 } from "ton";
+import { Address, beginCell, contractAddress, toNano, TonClient4, internal, fromNano, WalletContractV4 } from "@ton/ton";
 import { deploy } from "./utils/deploy";
 import { printAddress, printDeploy, printHeader, printSeparator } from "./utils/print";
 import { buildOnchainMetadata } from "./utils/jetton-helpers";
@@ -9,7 +9,7 @@ dotenv.config();
 import { SampleJetton, storeTokenTransfer } from "./output/SampleJetton_SampleJetton";
 // ========================================
 
-let NewOnwer_Address = Address.parse(""); // 🔴 Owner should usually be the deploying wallet's address.
+let NewOnwer_Address = Address.parse("UQDZ_L3C4g0zRU8zlIgIWGNueNZbghXV5Gdg-LLmhby1b9i3"); // 🔴 Owner should usually be the deploying wallet's address.
 
 (async () => {
     const client4 = new TonClient4({
@@ -17,7 +17,7 @@ let NewOnwer_Address = Address.parse(""); // 🔴 Owner should usually be the de
         endpoint: "https://sandbox-v4.tonhubapi.com",
     });
 
-    let mnemonics = (process.env.mnemonics || "").toString(); // 🔴 Change to your own, by creating .env file!
+    let mnemonics = (process.env.mnemonics_2 || "").toString(); // 🔴 Change to your own, by creating .env file!
     let keyPair = await mnemonicToPrivateKey(mnemonics.split(" "));
     let secretKey = keyPair.secretKey;
     let workchain = 0;
@@ -28,15 +28,15 @@ let NewOnwer_Address = Address.parse(""); // 🔴 Owner should usually be the de
 
     let wallet_contract = client4.open(wallet);
     const jettonParams = {
-        name: "Test Token Name",
+        name: "XRaider",
         description: "This is description of Test Jetton Token in Tact-lang",
-        symbol: "TTN",
+        symbol: "XRD",
         image: "https://avatars.githubusercontent.com/u/104382459?s=200&v=4",
     };
 
     // Create content Cell
     let content = buildOnchainMetadata(jettonParams);
-    let max_supply = toNano("666.123456789"); // 🔴 Set the specific total supply in nano
+    let max_supply = toNano("20000000"); // 🔴 Set the specific total supply in nano
 
     // Compute init data for deployment
     // NOTICE: the parameters inside the init functions were the input for the contract address

@@ -1,4 +1,4 @@
-import { beginCell, Cell, contractAddress, storeStateInit } from "ton-core";
+import { beginCell, Cell, contractAddress, storeStateInit } from "@ton/core";
 import { prompt } from "enquirer";
 import open from "open";
 import base64url from "base64url";

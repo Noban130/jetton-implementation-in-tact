@@ -1,3 +1,5 @@
+ode_modules\\@tact-lang\\compiler\\stdlib\\stdlib.fc` `E:\\working repos\\jetton-implementation-in-tact\
+ode_modules\\@tact-lang\\compiler\\stdlib\\stdlib_ex.fc` `E:/working repos/jetton-implementation-in-tact/sources/output/SampleJetton_SampleJetton.code.fc` incl:`E:/working repos/jetton-implementation-in-tact/sources/output/SampleJetton_SampleJetton.headers.fc` incl:`E:/working repos/jetton-implementation-in-tact/sources/output/SampleJetton_SampleJetton.stdlib.fc` incl:`E:/working repos/jetton-implementation-in-tact/sources/output/SampleJetton_SampleJetton.storage.fc` 
 PROGRAM{
   DECLPROC __tact_verify_address
   DECLPROC __tact_load_address
@@ -667,13 +669,10 @@ PROGRAM{
     s3 s0 s0 XCHG3
   }>
   $SampleJetton$_internal_binary_TokenBurnNotification PROCINLINE:<{
-    NIP
-    DUP
-    __tact_not_null INLINECALLDICT
     s5 s8 XCHG
     s4 s7 XCHG
     s3 s6 XCHG
-    s8 s7 s0 XCHG3
+    s8 s7 s7 XCHG3
     $SampleJetton$_fun_requireSenderAsWalletOwner INLINECALLDICT
     s4 s7 XCHG2
     SUB

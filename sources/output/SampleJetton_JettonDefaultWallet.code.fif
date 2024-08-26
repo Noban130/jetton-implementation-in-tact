@@ -1,3 +1,5 @@
+ode_modules\\@tact-lang\\compiler\\stdlib\\stdlib.fc` `E:\\working repos\\jetton-implementation-in-tact\
+ode_modules\\@tact-lang\\compiler\\stdlib\\stdlib_ex.fc` `E:/working repos/jetton-implementation-in-tact/sources/output/SampleJetton_JettonDefaultWallet.code.fc` incl:`E:/working repos/jetton-implementation-in-tact/sources/output/SampleJetton_JettonDefaultWallet.headers.fc` incl:`E:/working repos/jetton-implementation-in-tact/sources/output/SampleJetton_JettonDefaultWallet.stdlib.fc` incl:`E:/working repos/jetton-implementation-in-tact/sources/output/SampleJetton_JettonDefaultWallet.storage.fc` 
 PROGRAM{
   DECLPROC __tact_verify_address
   DECLPROC __tact_load_address
@@ -642,7 +644,7 @@ PROGRAM{
     s7 s6 XCHG2
     0 PUSHINT
     64 PUSHINT
-    FALSE
+    TRUE
     s12 PUSH
     s8 s1 s3 XCHG3
     s14 s7 XCHG2
@@ -762,11 +764,9 @@ PROGRAM{
     THROWANYIFNOT
     0 PUSHINT
     64 PUSHINT
+    s4 s3 s6 XC2PU
     TRUE
-    s0 s3 XCHG
-    __tact_not_null INLINECALLDICT
-    s5 s4 s0 XCHG3
-    s7 s(-1) PUXC
+    s0 s4 XCHG
     $TokenBurnNotification$_constructor_query_id_amount_sender_response_destination INLINECALLDICT
     $TokenBurnNotification$_store_cell INLINECALLDICT
     s4 PUSH
