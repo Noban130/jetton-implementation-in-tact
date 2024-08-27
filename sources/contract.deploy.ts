@@ -1,7 +1,6 @@
 import { beginCell, contractAddress, toNano, TonClient4, WalletContractV4, internal, fromNano, Cell } from "@ton/ton";
 import { mnemonicToPrivateKey } from "ton-crypto";
 import { buildOnchainMetadata } from "./utils/jetton-helpers";
-
 import { SampleJetton, storeMint } from "./output/SampleJetton_SampleJetton";
 import { JettonDefaultWallet, TokenBurn } from "./output/SampleJetton_JettonDefaultWallet";
 import { printSeparator } from "./utils/print";
@@ -83,8 +82,11 @@ dotenv.config();
                 }),
             ],
         });
-        const message = new Cell();
-        message.bits
+        function createCellFromString(inputString: string): Cell {
+            const cell = beginCell().storeBuffer(Buffer.from(inputString, 'utf-8')).endCell(); // Store bytes in the cell
+            return cell;
+        }
+        const message = createCellFromString("Owner: MintClose")
   // Send the message to the contract
   await deployer_wallet_contract.send(message);
     })();
