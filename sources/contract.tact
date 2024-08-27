@@ -1,4 +1,4 @@
-import "./jetton";
+import "./jetton.tact";
 
 message Mint {
     amount: Int;

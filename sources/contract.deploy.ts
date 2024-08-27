@@ -82,12 +82,6 @@ dotenv.config();
                 }),
             ],
         });
-        function createCellFromString(inputString: string): Cell {
-            const cell = beginCell().storeBuffer(Buffer.from(inputString, 'utf-8')).endCell(); // Store bytes in the cell
-            return cell;
-        }
-        const message = createCellFromString("Owner: MintClose")
-  // Send the message to the contract
-  await deployer_wallet_contract.send(message);
+        
     })();
     
