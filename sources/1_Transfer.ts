@@ -9,7 +9,7 @@ dotenv.config();
 import { SampleJetton, storeTokenTransfer } from "./output/SampleJetton_SampleJetton";
 // ========================================
 
-let NewOnwer_Address = Address.parse("UQDZ_L3C4g0zRU8zlIgIWGNueNZbghXV5Gdg-LLmhby1b9i3"); // 🔴 Owner should usually be the deploying wallet's address.
+let NewOnwer_Address = Address.parse("0QBunQhjwtETQzAJG1ZAPced5XWC44v05htFM5Kf_JpIhJjR"); // 🔴 Owner should usually be the deploying wallet's address.
 
 (async () => {
     const client4 = new TonClient4({
@@ -62,20 +62,21 @@ let NewOnwer_Address = Address.parse("UQDZ_L3C4g0zRU8zlIgIWGNueNZbghXV5Gdg-LLmhb
 
     // ========================================
     let forward_string_test = beginCell().storeBit(1).storeUint(0, 32).storeStringTail("EEEEEE").endCell();
-    let packed = beginCell()
-        .store(
-            storeTokenTransfer({
-                $$type: "TokenTransfer",
-                query_id: 0n,
-                amount: toNano(20000),
-                destination: NewOnwer_Address,
-                response_destination: wallet_contract.address, // Original Owner, aka. First Minter's Jetton Wallet
-                custom_payload: forward_string_test,
-                forward_ton_amount: toNano("0.000000001"),
-                forward_payload: test_message_left,
-            })
-        )
-        .endCell();
+        let packed = beginCell()
+            .store(
+                storeTokenTransfer({
+                    $$type: "TokenTransfer",
+                    query_id: 0n,
+                    amount: toNano(20043),
+                    sender: NewOnwer_Address,
+                    response_destination: wallet_contract.address, // Original Owner, aka. First Minter's Jetton Wallet
+                    custom_payload: forward_string_test,
+                    forward_ton_amount: toNano("0.000000001"),
+                    forward_payload: test_message_left,
+                })
+            )
+            .endCell();
+
 
     let deployAmount = toNano("0.3");
     let seqno: number = await wallet_contract.getSeqno();
