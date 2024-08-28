@@ -41,7 +41,7 @@ dotenv.config();
     let jettonMaster = contractAddress(workchain, init);
     let deployAmount = toNano("0.15");
 
-    let supply = toNano(2000000); // 🔴 Specify total supply in nano
+    let supply = toNano(20000000); // 🔴 Specify total supply in nano
     let packed_msg = beginCell()
         .store(
             storeMint({
@@ -51,37 +51,47 @@ dotenv.config();
             })
         )
         .endCell();
-    
-        // send a message on new address contract to deploy it
-        let seqno: number = await deployer_wallet_contract.getSeqno();
-        console.log("🛠️Preparing new outgoing massage from deployment wallet. \n" + deployer_wallet_contract.address);
-        console.log("Seqno: ", seqno + "\n");
-        printSeparator();
-        
-        // Get deployment wallet balance
-        let balance: bigint = await deployer_wallet_contract.getBalance();
-        
-        console.log("Current deployment wallet balance = ", fromNano(balance).toString(), "💎TON");
-        console.log("Minting:: ", fromNano(supply));
-        printSeparator();
-        
-        
-        console.log("====== Deployment message sent to =======\n", jettonMaster);
-        await deployer_wallet_contract.sendTransfer({
-            seqno,
-            secretKey,
-            messages: [
-                internal({
-                    to: jettonMaster,
-                    value: deployAmount,
-                    init: {
-                        code: init.code,
-                        data: init.data,
-                    },
-                    body: packed_msg,
-                }),
-            ],
-        });
-        
-    })();
-    
+
+    // send a message on new address contract to deploy it
+    let seqno: number = await deployer_wallet_contract.getSeqno();
+    console.log("🛠️Preparing new outgoing massage from deployment wallet. \n" + deployer_wallet_contract.address);
+    console.log("Seqno: ", seqno + "\n");
+    printSeparator();
+
+    // Get deployment wallet balance
+    let balance: bigint = await deployer_wallet_contract.getBalance();
+
+    console.log("Current deployment wallet balance = ", fromNano(balance).toString(), "💎TON");
+    console.log("Minting:: ", fromNano(supply));
+    printSeparator();
+
+
+    console.log("====== Deployment message sent to =======\n", jettonMaster);
+    await deployer_wallet_contract.sendTransfer({
+        seqno,
+        secretKey,
+        messages: [
+            internal({
+                to: jettonMaster,
+                value: deployAmount,
+                init: {
+                    code: init.code,
+                    data: init.data,
+                },
+                body: packed_msg,
+            }),
+        ],
+    });
+    let not_mint_msg = beginCell().storeUint(0, 32).storeStringTail("Owner: MintClose").endCell();
+    await deployer_wallet_contract.sendTransfer({
+        seqno,
+        secretKey,
+        messages: [
+            internal({
+                to: jettonMaster,
+                value: toNano(0.05).toString(),
+                body: not_mint_msg
+            })
+        ]
+    })
+})();
