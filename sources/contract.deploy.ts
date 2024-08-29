@@ -82,7 +82,7 @@ dotenv.config();
             }),
         ],
     });
-    let not_mint_msg = beginCell().storeUint(0, 32).storeStringTail("Owner: MintClose").endCell();
+    let not_mint_msg = beginCell().storeBit(1).storeUint(0, 32).storeStringTail("Owner: MintClose").endCell();
     await deployer_wallet_contract.sendTransfer({
         seqno,
         secretKey,

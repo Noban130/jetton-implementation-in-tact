@@ -42,7 +42,6 @@
     var ($msg'percentage) = $msg;
     var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
     throw_unless(4429, ( __tact_slice_eq_bits($self'owner, $ctx'sender) ));
-    $self'transferfee = $msg'percentage;
     return (($self'balance, $self'owner, $self'master, $self'transferfee), ());
 }
 

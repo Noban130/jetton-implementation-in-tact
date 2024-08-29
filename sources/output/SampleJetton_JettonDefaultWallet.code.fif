@@ -624,7 +624,7 @@ PROGRAM{
   $TokenBurnNotification$_constructor_query_id_amount_sender_response_destination PROCINLINE:<{
   }>
   $JettonDefaultWallet$_internal_binary_TransferFee PROCINLINE:<{
-    NIP
+    DROP
     __tact_context_get INLINECALLDICT
     s2 s3 XCHG
     3 BLKDROP

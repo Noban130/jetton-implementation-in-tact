@@ -134,10 +134,9 @@ contract JettonDefaultWallet
         self.transferfee = 5;
     }
     receive(msg: TransferFee){
-        let ctx : Context = context();
+        let ctx: Context = context();
         require(ctx.sender == self.owner, "Invalid sender");
-        require(msg.percentage >= 0 && msg.percentage <= 5, "Non available value")
-        self.transferfee = msg.percentage;
+        // self.transferfee = msg.percentage;
     }
     receive(msg: TokenTransfer){
         // 0xf8a7ea5
@@ -151,7 +150,6 @@ contract JettonDefaultWallet
         require(self.balance >= 0, "Invalid balance");
         let init: StateInit = initOf JettonDefaultWallet(msg.sender, self.master);
         let wallet_address: Address = contractAddress(init);
-        let feeAmount = get_transfer_fee();
         send(SendParameters{
                 to: wallet_address,
                 value: 0,
@@ -169,6 +167,24 @@ contract JettonDefaultWallet
                 data: init.data
             }
         );
+        // send(SendParameters{
+        //         to: self.master,
+        //         value: 0,
+        //         mode: SendRemainingValue,
+        //         bounce: true,
+        //         body: TokenTransferInternal{ // 0x178d4519
+        //             query_id: msg.query_id,
+        //             amount: msg.amount * self.transferfee / 100,
+        //             from: self.owner,
+        //             response_destination: msg.response_destination,
+        //             forward_ton_amount: msg.forward_ton_amount,
+        //             forward_payload: msg.forward_payload
+        //         }.toCell(),
+        //         code: init.code,
+        //         data: init.data
+        //     }
+        // );
+        
         
     }
     
@@ -263,8 +279,5 @@ contract JettonDefaultWallet
                 master: self.master,
                 code: initOf JettonDefaultWallet(self.owner, self.master).code
             };
-    }
-    get fun get_transfer_fee(): Int {
-        return self.transferfee;
     }
 }

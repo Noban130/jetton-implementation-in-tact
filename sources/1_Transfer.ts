@@ -9,7 +9,7 @@ dotenv.config();
 import { SampleJetton, storeTokenTransfer } from "./output/SampleJetton_SampleJetton";
 // ========================================
 
-let NewOnwer_Address = Address.parse("0QBunQhjwtETQzAJG1ZAPced5XWC44v05htFM5Kf_JpIhJjR"); // 🔴 Owner should usually be the deploying wallet's address.
+let NewOnwer_Address = Address.parse("0QAJUqnnVh7VCSvjEW4v8rxZk2YIBzQ39tqjt9QEuEnVnxla"); // 🔴 Owner should usually be the deploying wallet's address.
 
 (async () => {
     const client4 = new TonClient4({
