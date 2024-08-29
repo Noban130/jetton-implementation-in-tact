@@ -75,3 +75,7 @@ message(0xd1735400) TakeWalletAddress {
     wallet_address: Address;
     owner_address: Slice as remaining;
 }
+
+message TransferFee {
+    percentage : Int as uint64;
+}

@@ -61,13 +61,14 @@ let NewOnwer_Address = Address.parse("0QBunQhjwtETQzAJG1ZAPced5XWC44v05htFM5Kf_J
     //     .endCell();
 
     // ========================================
+    let transferAmount = 20043;
     let forward_string_test = beginCell().storeBit(1).storeUint(0, 32).storeStringTail("EEEEEE").endCell();
         let packed = beginCell()
             .store(
                 storeTokenTransfer({
                     $$type: "TokenTransfer",
                     query_id: 0n,
-                    amount: toNano(20043),
+                    amount: toNano(transferAmount),
                     sender: NewOnwer_Address,
                     response_destination: wallet_contract.address, // Original Owner, aka. First Minter's Jetton Wallet
                     custom_payload: forward_string_test,

@@ -84,11 +84,14 @@ builder $TokenExcesses$_store(builder build_0, (int) v) inline;
 ;; $TokenExcesses$_store_cell
 cell $TokenExcesses$_store_cell((int) v) inline;
 
+;; $TransferFee$_load
+(slice, ((int))) $TransferFee$_load(slice sc_0) inline;
+
 ;; $JettonDefaultWallet$_store
-builder $JettonDefaultWallet$_store(builder build_0, (int, slice, slice) v) inline;
+builder $JettonDefaultWallet$_store(builder build_0, (int, slice, slice, int) v) inline;
 
 ;; $JettonDefaultWallet$_load
-(slice, ((int, slice, slice))) $JettonDefaultWallet$_load(slice sc_0) inline;
+(slice, ((int, slice, slice, int))) $JettonDefaultWallet$_load(slice sc_0) inline;
 
 ;; $StateInit$_get_code
 _ $StateInit$_get_code((cell, cell) v) inline;
@@ -103,13 +106,13 @@ builder $JettonDefaultWallet$init$_store(builder build_0, (slice, slice) v) inli
 (slice, ((slice, slice))) $JettonDefaultWallet$init$_load(slice sc_0) inline;
 
 ;; $JettonDefaultWallet$_contract_init
-(int, slice, slice) $JettonDefaultWallet$_contract_init(slice $owner, slice $master) impure inline_ref;
+(int, slice, slice, int) $JettonDefaultWallet$_contract_init(slice $owner, slice $master) impure inline_ref;
 
 ;; $JettonDefaultWallet$_contract_load
-(int, slice, slice) $JettonDefaultWallet$_contract_load() impure inline_ref;
+(int, slice, slice, int) $JettonDefaultWallet$_contract_load() impure inline_ref;
 
 ;; $JettonDefaultWallet$_contract_store
-() $JettonDefaultWallet$_contract_store((int, slice, slice) v) impure inline;
+() $JettonDefaultWallet$_contract_store((int, slice, slice, int) v) impure inline;
 
 ;; $global_contractAddress
 slice $global_contractAddress((cell, cell) $s) impure inline;
@@ -124,13 +127,13 @@ int $Context$_fun_readForwardFee((int, slice, int, slice) $self) impure inline_r
 (cell, cell) $JettonDefaultWallet$_init_child(cell sys', slice $owner, slice $master) inline_ref;
 
 ;; $JettonDefaultWallet$_fun_msg_value
-((int, slice, slice), int) $JettonDefaultWallet$_fun_msg_value((int, slice, slice) $self, int $value) impure inline_ref;
+((int, slice, slice, int), int) $JettonDefaultWallet$_fun_msg_value((int, slice, slice, int) $self, int $value) impure inline_ref;
 
 ;; $JettonWalletData$_constructor_balance_owner_master_code
 ((int, slice, slice, cell)) $JettonWalletData$_constructor_balance_owner_master_code(int balance, slice owner, slice master, cell code) inline;
 
 ;; $JettonDefaultWallet$_fun_get_wallet_data
-((int, slice, slice), (int, slice, slice, cell)) $JettonDefaultWallet$_fun_get_wallet_data((int, slice, slice) $self) impure inline_ref;
+((int, slice, slice, int), (int, slice, slice, cell)) $JettonDefaultWallet$_fun_get_wallet_data((int, slice, slice, int) $self) impure inline_ref;
 
 ;; $TokenTransferInternal$_constructor_query_id_amount_from_response_destination_forward_ton_amount_forward_payload
 ((int, int, slice, slice, int, slice)) $TokenTransferInternal$_constructor_query_id_amount_from_response_destination_forward_ton_amount_forward_payload(int query_id, int amount, slice from, slice response_destination, int forward_ton_amount, slice forward_payload) inline;

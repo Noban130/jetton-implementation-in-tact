@@ -41,7 +41,7 @@ dotenv.config();
     let jettonMaster = contractAddress(workchain, init);
     let deployAmount = toNano("0.15");
 
-    let supply = toNano(20000000); // 🔴 Specify total supply in nano
+    let supply = toNano(1234567); // 🔴 Specify total supply in nano
     let packed_msg = beginCell()
         .store(
             storeMint({
